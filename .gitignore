@@ -1,0 +1,11 @@
+.idea/
+
+node_modules/
+
+corel/
+
+deploy/
+
+coverage/
+
+READMEru.md
