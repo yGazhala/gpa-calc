@@ -119,6 +119,7 @@ module.exports = function makeWebpackConfig () {
         noParse: wrapRegexp(/\/node_modules\/(angular\/angular|angular-messages\/angular-messages|angular-ui-router\/release\/angular-ui-router|angularfire\/dist\/angularfire|firebase\/lib\/firebase-node|angular-material\/|angular-animate\/|angular-aria\/)/, 'noParse')
     };
 
+    /*
     // Isparta loader
     // Instrument JS files with Isparta for subsequent code coverage reporting.
     // Reference: https://github.com/deepsweet/isparta-loader
@@ -140,17 +141,12 @@ module.exports = function makeWebpackConfig () {
             loader: 'isparta'
         })
     }
+    */
 
     // Plugins
     // Reference: http://webpack.github.io/docs/configuration.html#plugins
     // List: http://webpack.github.io/docs/list-of-plugins.html
     config.plugins = [];
-
-    config.plugins.push(
-        // CopyWebpackPlugin copies individual files or entire directories to the build directory.
-        // https://github.com/kevlened/copy-webpack-plugin
-        new CopyWebpackPlugin([{from: 'node_modules/angular-material/angular-material.min.css'}])
-    );
 
     if(!isTest) {
         config.plugins.push(

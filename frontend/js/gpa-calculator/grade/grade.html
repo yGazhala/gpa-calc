@@ -1,0 +1,20 @@
+
+<form name="gradeNameForm">
+    <label>GRADE:</label>
+    <input class="grade_gradeNameField" type="text" ng-model="$ctrl.gradeName" name="gradeNameField"
+           ng-change="$ctrl.updateGradeName({grade: $ctrl.gradeName})"
+           ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }"
+           required>
+    <div ng-messages="gradeNameForm['gradeNameField'].$error" ng-if="gradeNameForm['gradeNameField'].$dirty" role="alert">
+        <div class="gradeNameForm_errorMessage" ng-message="required"
+            >Please, enter a value for this field.</div>
+    </div>
+</form>
+
+
+<ul>
+    <li ng-repeat="student in $ctrl.gradeData">
+        <span>{{student.studentName}}</span>
+        <span>{{student.gpa}}</span>
+    </li>
+</ul>
