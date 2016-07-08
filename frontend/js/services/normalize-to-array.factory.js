@@ -7,6 +7,27 @@ export default function NormalizeToArrayFactory() {
 
     return function(object) {
         if (isEmpty(object)) { return []; }
+
+        return Object.keys(object).map((key) => {
+            return object[key]
+            });
+
+        // Helper function for checking if an object is empty
+        function isEmpty(object) {
+            for (let key in object) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+}
+
+/*
+export default function NormalizeToArrayFactory() {
+
+    return function(object) {
+        if (isEmpty(object)) { return []; }
         if (Array.isArray(object)) { return object; }
 
         return Object.keys(object).map(key => {
@@ -27,3 +48,4 @@ export default function NormalizeToArrayFactory() {
         }
     };
 }
+    */

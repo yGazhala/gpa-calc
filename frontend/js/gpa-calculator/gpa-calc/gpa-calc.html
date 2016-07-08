@@ -1,15 +1,15 @@
 <section class="gpaCalc_topBar">
     <span>School GPA calculator</span>
-    <span class="gpaCalc_gpaResult">5.0</span>
+    <span class="gpaCalc_avgGpa">{{$ctrl.avgGpa}}</span>
     <ul>
-        <li class="gpaCalc_gradeTab" ng-repeat="grade in $ctrl.gradesList | orderBy: '-gradeName'"
-            ui-sref="grade({id: grade.id})"
+        <li class="gpaCalc_gradeTab" ng-repeat="grade in $ctrl.gradesList"
+            ui-sref="grade({id: grade.gradeId})"
                 >
             <span class="gpaCalc_gradeName">{{grade.gradeName}}</span>
             <button class="gpaCalc_removeGradeButton" ng-click="$ctrl.removeGrade(grade);
                 $event.stopPropagation()">x</button>
         </li>
-        <li><button ng-click="$ctrl.addGrade()">Add</button></li>
+        <li><button ng-click="$ctrl.addAndMoveToNewGrade()">Add</button></li>
     </ul>
 </section>
 

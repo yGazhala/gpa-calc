@@ -1,123 +1,113 @@
 'use strict';
 
 GpaDataService.$inject = ['$http', 'NormalizeToArrayFactory', 'FIREBASE_URI'];
+
 function GpaDataService($http, NormalizeToArrayFactory, FIREBASE_URI) {
     let uri = FIREBASE_URI;
 
-    this.getGrade = function(gradeId) {
+    this.getGradesList = () => {
 
-        return $http.get(uri + '/' + gradeId + '.json')
+        return $http.get(uri + 'grades.json')
             .then((response) => {
 
                 return NormalizeToArrayFactory(response.data);
             })
             .catch((error) => {
-                console.error('Failed to load data from: ' + uri + '/' + gradeId + '.json'
+                console.error('Failed to load data from: ' + uri +'grades.json'
                     + ', error: ' + error.status + ' - ' + error.statusText);
             });
     };
 
-    this.getGradesList = function() {
+    this.getGrade = (gradeId) => {
 
-        return $http.get(uri + 'grades-list.json')
-            .then((response) => {
-
-                return NormalizeToArrayFactory(response.data);
-            })
-            .catch((error) => {
-                console.error('Failed to load data from: ' + uri +'grades-list.json'
-                    + ', error: ' + error.status + ' - ' + error.statusText);
-            });
-    };
-
-    this.getGradeName = function(gradeId) {
-
-        return $http.get(uri + 'grades-list/' + gradeId + '.json')
+        return $http.get(uri + 'grades/' + gradeId + '.json')
             .then((response) => {
 
                 return response.data;
             })
             .catch((error) => {
-                console.error('Failed to load data from: ' + uri + 'grades-list/' + gradeId + '.json'
+                console.error('Failed to load data from: ' + uri + 'grades/' + gradeId + '.json'
                     + ', error: ' + error.status + ' - ' + error.statusText);
             });
     };
 
-    this.addGrade = function() {
-        // Setting the default name
+    this.addGrade = () => {
+        // Initialize a new grade with default data
         let newGrade = {
-           "gradeName": "new grade"
+            "gradeName": "new grade"
         };
 
-        return $http.post(uri + 'grades-list.json', newGrade)
+        return $http.post(uri + 'grades.json', newGrade)
             // When we add the new object to Firebase, we need
             // a key to identify this object in future.
             // This key was automatically created by Firebase
             // when we added the object at the first time.
             // All we need - is to save the key in "id" property of the object.
             .then((response) => {
-                newGrade.id = response.data.name;
+                newGrade.gradeId = response.data.name;
 
                 return newGrade;
             })
             // Now, we have the id, but it does not stored at the Firebase,
-            // therefore we implement an additional PUT method
+            // therefore we call an additional update method
             .then(() => {
-
-                return $http.put(uri + 'grades-list/' + newGrade.id + '.json', newGrade)
+                return this.updateGrade(newGrade)
             })
+            .catch((error) => {
+                console.error('Failed to load data from: ' + uri + 'grades.json'
+                    + ', error: ' + error.status + ' - ' + error.statusText);
+            });
+    };
+
+    this.updateGrade = (grade) => {
+
+        return $http.put(uri + 'grades/' + grade.gradeId + '.json', grade)
             .then((response) => { return response.data; })
             .catch((error) => {
-                console.error('Failed to load data from: ' + uri + '.json'
+                console.error('Failed to load data from: ' + uri + 'grades/' + grade.gradeId + '.json'
                     + ', error: ' + error.status + ' - ' + error.statusText);
             });
     };
 
-    /*
-    this.addUser = function(newUser) {
+    this.removeGrade = (grade) => {
 
-        return $http.post(uri + '.json' + FIREBASE_SECRET, newUser)
-            .then((response) => {
-                // When we add the new object to FireBase, we need
-                // a key to identify this object in future.
-                // This key was automatically created by FireBase
-                // when we added the object at the first time.
-                // All we need - is to save the key in "id" property of the object.
-                newUser.id = response.data.name;
-
-                return newUser;
-            })
-            // Now, we have the id, but it does not stored at the FireBase,
-            // therefore we implement an additional PUT method
-            .then(() => {
-                return $http.put(uri + '/' + newUser.id + '.json' + FIREBASE_SECRET, newUser)
-            })
-            .then((response) => response.data)
-            .catch((error) => {
-                console.error('Failed to load data from: ' + uri + '.json' + FIREBASE_SECRET
-                    + ', error: ' + error.status + ' - ' + error.statusText);
-            });
-    };
-
-    this.removeUser = function(user) {
-
-        return $http.delete(uri + '/' + user.id + '.json' + FIREBASE_SECRET)
+        return $http.delete(uri + 'grades/' + grade.gradeId + '.json')
             .then((response) => response.data) // response.data === null
             .catch((error) => {
-                console.error('Failed to load data from: ' + uri + '/' + user.id + '.json' + FIREBASE_SECRET
+                console.error('Failed to load data from: ' + uri + 'grades/' + grade.gradeId + '.json'
+                    + ', error: ' + error.status + ' - ' + error.statusText);
+            });
+
+    };
+
+
+    this.addStudent = (gradeId, student) => {
+
+        return $http.post(uri + 'grades/' + gradeId + '/gradeData.json', student)
+            .then((response) => {
+                student.studentId = response.data.name;
+
+                return student;
+            })
+            .then(() => {
+                return $http.put(uri + 'grades/' + gradeId + '/gradeData/' + student.studentId + '.json', student)
+            })
+            .then((response) => response.data)
+            .catch((error) => {
+                console.error('Failed to load data from: ' + uri + 'grades/' + gradeId + '/gradeData.json'
                     + ', error: ' + error.status + ' - ' + error.statusText);
             });
     };
 
-    this.updateUser = function(user) {
+    this.removeStudent = (gradeId, student) => {
 
-        return $http.put(uri + '/' + user.id + '.json' + FIREBASE_SECRET, user)
-            .then((response) => response.data)
+        return $http.delete(uri + 'grades/' + gradeId + '/gradeData/' + student.studentId + '.json')
+            .then((response) => response.data) // response.data === null
             .catch((error) => {
-                console.error('Failed to load data from: ' + uri + '/' + user.id + '.json' + FIREBASE_SECRET
-                    + ', error: ' + error.status + ' - ' + error.statusText);
+                console.error('Failed to load data from: ' + uri + 'grades/' + gradeId + '/gradeData/'
+                    + student.studentId + '.json' + ', error: ' + error.status + ' - ' + error.statusText);
             });
-    };*/
+    };
 }
 
 export default GpaDataService;

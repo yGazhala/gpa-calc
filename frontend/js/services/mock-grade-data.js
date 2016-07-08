@@ -1,35 +1,37 @@
 'use strict';
 
-let gradesList = `[
-    {
-        "id": "0",
-        "gradeName": "8a"
-    }, {
-        "id": "1",
-        "gradeName": "8b"
-    }
-]`;
+let grades = {
+    "gradeId0": {
+        "gradeName": "8a",
+        "gradeId": "gradeId0",
+        "gradeData": {
+            "studentId0": {
+                "studentName": "Natasha Romanova",
+                "studentId": "studentId0",
+                "gpa": 4.2
+            },
+            "studentId1": {
+                "studentName": "Anna Svetlanova",
+                "studentId": "studentId1",
+                "gpa": 4.5
+            }
+        }
+    },
 
-let grade8a = `[
-    {
-        "id": "0",
-        "studentName": "Vasya Pupkin",
-        "gpa": 4.8
-    }, {
-        "id": "1",
-        "studentName": "Petia Vasechkin",
-        "gpa": 3.7
+    "gradeId1": {
+        "gradeName": "8b",
+        "gradeId": "gradeId1",
+        "gradeData": {
+            "studentId0": {
+                "studentName": "Vasya Pupkin",
+                "studentId": "studentId0",
+                "gpa": 4.8
+            },
+            "studentId1": {
+                "studentName": "Petia Vasechkin",
+                "studentId": "studentId1",
+                "gpa": 3.7
+            }
+        }
     }
-]`;
-
-let grade8b = `[
-    {
-        "id": "0",
-        "studentName": "Natasha Romanova",
-        "gpa": 4.2
-    }, {
-        "id": "1",
-        "studentName": "Anna Svetlanova",
-        "gpa": 4.5
-    }
-]`;
+};
