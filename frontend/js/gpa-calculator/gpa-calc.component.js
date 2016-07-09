@@ -75,6 +75,11 @@ function GpaCalcController(GpaDataService, $state) {
         this.avgGpa = calculateAvgGpa(this._gpaArr);
     };
 
+    // move to first grade state
+    if (this.gradesList.length !== 0) {
+        $state.go('grade', {id: this.gradesList[0].gradeId})
+    }
+
     // internal functions
     function extractGpaValues (arrayOfObjects) {
         let gpaArr = [];

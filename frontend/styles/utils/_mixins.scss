@@ -1,0 +1,35 @@
+@mixin submit {
+  font-weight: normal;
+  color: map-get($colors, alternative-text);
+  background-color: map-get($colors, accent-alternative);
+  border: 1px solid map-get($colors, accent-alternative);
+  border-radius: 2px;
+  outline: none;
+
+  &:hover {
+    background-color: mix(black, map-get($colors, accent-alternative), 10%);
+    border-color: mix(black, map-get($colors, accent-alternative), 10%);
+  }
+
+  &:active {
+    background-color: mix(white, map-get($colors, accent-alternative), 10%);
+  }
+}
+
+@mixin removeButton {
+  padding: auto;
+  font-size: map-get($type-scale, '0') *1rem;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
+
+  &:hover {
+    color: map-get($colors, 'alternative-text');
+    background-color: map-get($colors, 'accent');
+    border-radius: 3px;
+  }
+}
+
+@mixin errorMessage {
+  color: map-get($colors, 'accent');
+}

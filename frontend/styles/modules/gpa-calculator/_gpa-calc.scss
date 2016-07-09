@@ -1,0 +1,58 @@
+.gpaCalc_topBar {
+  position: relative;
+  padding: map-get($type-scale, '-1') * 1rem;
+  padding-left: 0;
+
+  .gpaCalc_mainHeader {
+    color: map-get($colors, 'heading-text');
+    font-style: italic;
+  }
+
+  .gpaCalc_avgGpa {
+    position: absolute;
+    right: 0.5rem;
+    color: map-get($colors, 'heading-text');
+    font-style: italic;
+  }
+
+  .gpaCalc_avgGpaResult {
+    position: absolute;
+    right: 8rem;
+    color: map-get($colors, 'accent');
+    font-weight: bold;
+  }
+}
+
+.gpaCalc_gradeTabList {
+  padding-left: 0;
+  background-color: map-get($colors, 'primary-light');
+  border: 1px solid map-get($colors, 'border');
+
+  li {
+    display: inline-block;
+    padding: map-get($type-scale, '-3') * 1rem map-get($type-scale, '-1') * 1rem;
+    list-style-type: none;
+    color: map-get($colors, 'accent-alternative');
+    cursor: pointer;
+    border-right: 1px solid map-get($colors, 'border');
+  }
+
+  .gpaCalc_activeTab {
+    border-bottom: transparent;
+    background-color: white;
+  }
+}
+
+.gpaCalc_addNewGradeButton {
+  margin-left: 0.5rem;
+  font-size: map-get($type-scale, '0') * 1rem;
+}
+
+.gpaCalc_gradeName {
+  display: inline-block;
+}
+
+.gpaCalc_removeGradeButton {
+  margin-left: 1rem;
+  @include removeButton;
+}

@@ -1,0 +1,103 @@
+.grade_outerContainer {
+  border: 1px solid map-get($colors, 'border');
+  border-top: none;
+  padding: 1rem;
+}
+
+.grade_innerContainer {
+  width: 70%;
+}
+
+.grade_gradeNameForm {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.grade_gradeNameField {
+  padding: 0.2rem 0;
+}
+
+.gradeNameForm_errorMessage {
+  @include errorMessage;
+}
+
+.grade_listTitleContainer {
+  position: relative;
+  padding: 0.3rem 0;
+  padding-left: map-get($type-scale, '-3') * 1rem;
+  color: map-get($colors, 'accent-alternative');
+
+  .grade_gpaTitle {
+    position: absolute;
+    right: 5rem;
+  }
+}
+
+.grade_list {
+  height: 260px;
+  overflow-y: scroll;
+  padding-left: 0;
+  border: 1px solid map-get($colors, 'accent-alternative');
+  border-left: none;
+  border-right: none;
+
+  li {
+    position: relative;
+    padding: map-get($type-scale, '-2') * 1rem 0;
+    padding-left: map-get($type-scale, '-3') * 1rem;
+    list-style-type: none;
+    border-bottom: 1px solid map-get($colors, 'border');
+
+    &:hover {
+      background-color: map-get($colors, 'primary-light');;
+    }
+  }
+}
+
+.grade_studentGpaValue {
+  position: absolute;
+  right: 4rem;
+}
+
+.grade_removeStudentButton {
+  position: absolute;
+  right: 1rem;
+  top: 5px;
+  @include removeButton;
+}
+
+.grade_addStudentForm {
+  position: relative;
+  padding-top: 1rem;
+
+  section {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.grade_addStudentFormGpaSection {
+  position: absolute;
+  left: 50%;
+}
+
+.grade_addStudentFormNameField {
+  width: 10rem;
+  padding: 0.2rem 0;
+}
+
+.grade_addStudentFormGpaField {
+  width: 4rem;
+  padding: 0.2rem 0;
+}
+
+.addStudentForm_errorMessage {
+  @include errorMessage;
+}
+
+.addStudentForm_submit {
+  position: absolute;
+  right: -60px;
+  padding: 0.3rem 1rem;
+  @include submit;
+}

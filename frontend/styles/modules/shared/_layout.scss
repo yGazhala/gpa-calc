@@ -1,0 +1,11 @@
+.layout_topBar {
+  width: 100%;
+  background-color: map-get($colors, 'primary');
+  border-bottom: 1px solid map-get($colors, 'border');
+}
+
+.layout_mainContent {
+  margin-left: map-get($layout, 'content-margin-left') *1%;
+  margin-right: map-get($layout, 'content-margin-right') *1%;
+  background-color: map-get($colors, 'background');
+}

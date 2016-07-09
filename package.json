@@ -22,8 +22,7 @@
   "dependencies": {
     "angular": "^1.5.6",
     "angular-messages": "^1.5.6",
-    "angular-ui-router": "^0.2.18",
-    "angularfire": "^1.2.0"
+    "angular-ui-router": "^0.2.18"
   },
   "devDependencies": {
     "babel-core": "^6.7.7",
@@ -33,7 +32,6 @@
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
-    "firebase": "^2.4.2",
     "html-loader": "^0.4.3",
     "node-sass": "^3.6.0",
     "resolve-url-loader": "^1.4.3",

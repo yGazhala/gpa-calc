@@ -1,0 +1,18 @@
+<section class="gpaCalc_topBar">
+    <span class="gpaCalc_mainHeader">School GPA calculator</span>
+    <span class="gpaCalc_avgGpaResult">{{$ctrl.avgGpa}}</span>
+    <span class="gpaCalc_avgGpa">Average GPA</span>
+</section>
+
+<ul class="gpaCalc_gradeTabList">
+    <li ng-repeat="grade in $ctrl.gradesList"
+        ui-sref="grade({id: grade.gradeId})" ui-sref-active="gpaCalc_activeTab"
+            >
+        <span class="gpaCalc_gradeName">{{grade.gradeName}}</span>
+        <button class="gpaCalc_removeGradeButton" ng-click="$ctrl.removeGrade(grade);
+            $event.stopPropagation()">&#215;</button>
+    </li>
+    <button class="gpaCalc_addNewGradeButton" ng-click="$ctrl.addAndMoveToNewGrade()">+</button>
+</ul>
+
+<ui-view></ui-view>

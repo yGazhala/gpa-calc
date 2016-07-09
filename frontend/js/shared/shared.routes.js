@@ -4,7 +4,7 @@ routerConfig.$inject = ['$stateProvider'];
 function routerConfig($stateProvider) {
     $stateProvider
         .state('home', {
-            //abstract: true,
+            abstract: true,
             url: '/home',
             template: '<layout></layout>'
         })

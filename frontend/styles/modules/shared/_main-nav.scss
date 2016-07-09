@@ -1,0 +1,35 @@
+.mainNav_container {
+  margin-left: map-get($layout, 'content-margin-left') * 1%;
+
+  ul {
+    padding: map-get($type-scale, '-1') * 1rem;
+    padding-left: 0;
+  }
+
+  li {
+    display: inline;
+    padding: map-get($type-scale, '-1') * 1rem;
+    list-style-type: none;
+    font-weight: bold;
+    color: map-get($colors, 'accent-alternative');
+    cursor: pointer;
+  }
+
+  /*
+  a {
+    display: inline-block;
+    text-decoration: none;
+    //font-size: .9em;
+    //color: rgb(255,255,255);
+    text-transform: uppercase;
+
+    padding-top: 20px;
+    width: auto;
+    text-align: center;
+  }
+  */
+
+  li.active {
+    background-color: mix(black, map-get($colors, 'primary'), 10%);
+  }
+}

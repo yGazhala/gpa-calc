@@ -1,0 +1,34 @@
+$fonts: (
+  'base-family': 'Arial',
+  'base-size': 14 //px
+);
+
+$type-scale: (    // perfect fourth
+  '-3': 0.422,
+  '-2': 0.563,
+  '-1': 0.75,
+  '0': 1,      // base text
+  '1': 1.333,
+  '2': 1.777,
+  '3': 2.369
+);
+
+$colors: (
+  'primary': rgb(241, 241, 241),
+  'primary-light': mix(white, rgb(241, 241, 241), 50%),
+  'primary-dark': mix(black, rgb(241, 241, 241), 70%),
+  'border': rgb(229, 229, 229),
+  'accent': rgb(221, 75, 57),
+  'accent-alternative': rgb(77, 144, 254),
+  'alert-light': rgb(249, 237, 190),
+  'background': rgb(255, 255, 255),
+  'base-text': rgb(34, 34, 34),
+  'heading-text': rgb(85, 85, 85),
+  'secondary-text': rgb(102, 102, 102),
+  'alternative-text': rgb(255, 255, 255)
+);
+
+$layout: (
+  'content-margin-left': 15, //%
+  'content-margin-right': 15, //%
+);

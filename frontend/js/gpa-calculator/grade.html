@@ -1,0 +1,59 @@
+<section class="grade_outerContainer">
+    <section class="grade_innerContainer">
+        <form class="grade_gradeNameForm" name="gradeNameForm">
+            <label>GRADE:</label>
+            <input class="grade_gradeNameField" type="text" ng-model="$ctrl.grade.gradeName" name="gradeNameField"
+                   ng-change="$ctrl.updateGradeName({grade: $ctrl.grade})"
+                   ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }"
+                   required>
+            <div ng-messages="gradeNameForm['gradeNameField'].$error" ng-if="gradeNameForm['gradeNameField'].$dirty" role="alert">
+                <div class="gradeNameForm_errorMessage" ng-message="required"
+                    >Please, enter a value for this field.</div>
+            </div>
+        </form>
+
+        <div class="grade_listTitleContainer">
+            <span>Name</span><span class="grade_gpaTitle">GPA</span>
+        </div>
+        <ul class="grade_list">
+            <li ng-repeat="student in $ctrl.gradeData">
+                <span>{{student.studentName}}</span>
+                <span class="grade_studentGpaValue">{{student.gpa}}</span>
+                <button class="grade_removeStudentButton"
+                        ng-click="$ctrl.removeStudent($ctrl.grade.gradeId, student);"
+                            >&#215;</button>
+            </li>
+        </ul>
+        <form class="grade_addStudentForm" name="addStudentForm"
+              ng-submit="$ctrl.addStudent($ctrl.grade.gradeId, student)">
+            <fieldset>
+                <section>
+                    <label>Name:</label>
+                    <input class="grade_addStudentFormNameField" type="text" name="studentName"
+                           ng-model="student.studentName" required>
+                    <div ng-messages="addStudentForm['studentName'].$error"
+                         ng-if="addStudentForm['studentName'].$dirty" role="alert">
+                        <div class="addStudentForm_errorMessage" ng-message="required"
+                                >Please, enter a value for this field.</div>
+                    </div>
+                </section>
+                <section class="grade_addStudentFormGpaSection">
+                    <label>GPA:</label>
+                    <input class="grade_addStudentFormGpaField" type="number" step="0.01" name="studentGpa"
+                            ng-model="student.gpa" required min="0" max="5">
+
+                    <div ng-messages="addStudentForm['studentGpa'].$error"
+                            ng-if="addStudentForm['studentGpa'].$dirty" role="alert">
+                        <div class="addStudentForm_errorMessage" ng-message="required"
+                                >Please, enter a value for this field.</div>
+                        <div class="addStudentForm_errorMessage" ng-message="min"
+                                >This value must be 0 or greater.</div>
+                        <div class="addStudentForm_errorMessage" ng-message="max"
+                                >This value must be 5 or less.</div>
+                    </div>
+                </section>
+                <input class="addStudentForm_submit" type="submit" value="Add">
+            </fieldset>
+        </form>
+    </section>
+</section>
