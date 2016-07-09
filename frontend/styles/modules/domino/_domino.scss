@@ -1,0 +1,73 @@
+.domino_mainHeader {
+  color: map-get($colors, 'heading-text');
+  padding: 1rem 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.domino_rotateControlContainer {
+  padding: 2rem 0 0.5rem 0;
+}
+
+.domino_rotateCounterClockwiseButton {
+  margin-left: 6rem;
+  margin-right: 2rem;
+}
+
+.domino_outerContainer {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.domino_container {
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  width: 72px;
+  height: 144px;
+  border: 1px solid black;
+
+  -webkit-transition-property: transform; /* Safari */
+  -webkit-transition-duration: 0.5s; /* Safari */
+  transition-property: transform;
+  transition-duration: 0.5s;
+}
+
+.domino_middleLine {
+  border-bottom: 2px solid black;
+}
+
+.domino_circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  margin-left: 7px;
+  margin-top: 7px;
+}
+
+.domino_active {
+  background-color: black;
+}
+
+.domino_top, .domino_bottom {
+  width: 100%;
+  height: 50%;
+}
+
+.domino_sizeControlContainer {
+  margin-bottom: 1rem;
+
+  input {
+    vertical-align: middle;
+    margin-left: 1rem;
+  }
+}
+
+.domino_animationSpeedControlContainer {
+  input {
+    vertical-align: middle;
+  }
+}

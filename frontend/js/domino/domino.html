@@ -1,1 +1,145 @@
-<p>Domino will be here</p>
+<p class="domino_mainHeader">Select your domino</p>
+
+<section class="domino_selectDominoControlContainer">
+    <label for="topDomino">Select the top</label>
+    <select name="topDomino" id="topDomino" ng-model="$ctrl.dominoTopSelected">
+        <option value="{{$ctrl.dominoAvailable[0]}}">1</option>
+        <option value="{{$ctrl.dominoAvailable[1]}}">2</option>
+        <option value="{{$ctrl.dominoAvailable[2]}}">3</option>
+        <option value="{{$ctrl.dominoAvailable[3]}}">4</option>
+        <option value="{{$ctrl.dominoAvailable[4]}}">5</option>
+        <option value="{{$ctrl.dominoAvailable[5]}}">6</option>
+    </select>
+
+    <label for="bottomDomino">Select the bottom</label>
+    <select name="bottomDomino" id="bottomDomino" ng-model="$ctrl.dominoBottomSelected">
+        <option value="{{$ctrl.dominoAvailable[0]}}">1</option>
+        <option value="{{$ctrl.dominoAvailable[1]}}">2</option>
+        <option value="{{$ctrl.dominoAvailable[2]}}">3</option>
+        <option value="{{$ctrl.dominoAvailable[3]}}">4</option>
+        <option value="{{$ctrl.dominoAvailable[4]}}">5</option>
+        <option value="{{$ctrl.dominoAvailable[5]}}">6</option>
+    </select>
+</section>
+
+<section class="domino_rotateControlContainer">
+    <button class="domino_rotateCounterClockwiseButton"
+            ng-click="$ctrl.rotateDomino(-90)"
+            ><img src="../../images/counter-clockwise.png"></button>
+
+    <button class="domino_rotateClockwiseButton"
+            ng-click="$ctrl.rotateDomino(90)"
+            ><img src="../../images/clockwise.png"></button>
+</section>
+
+<section class="domino_outerContainer">
+    <section class="domino_container">
+        <table class="domino_top">
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoTopSelected === 'num2' || $ctrl.dominoTopSelected === 'num3'|| $ctrl.dominoTopSelected === 'num4'|| $ctrl.dominoTopSelected === 'num5' || $ctrl.dominoTopSelected === 'num6'}"
+                                ></span>
+                    </td>
+                    <td></td>
+                    <td>
+                        <span class="domino_circle num4 num5 num6"
+                              ng-class="{domino_active: $ctrl.dominoTopSelected === 'num4'|| $ctrl.dominoTopSelected === 'num5'|| $ctrl.dominoTopSelected === 'num6'}"
+                                ></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoTopSelected === 'num6'}"
+                                ></span>
+                    </td>
+                    <td>
+                        <span class="domino_circle"
+                            ng-class="{domino_active: $ctrl.dominoTopSelected === 'num1'|| $ctrl.dominoTopSelected === 'num3'|| $ctrl.dominoTopSelected === 'num5'}"
+                                ></span>
+                    </td>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoTopSelected === 'num6'}"
+                                ></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoTopSelected === 'num4'|| $ctrl.dominoTopSelected === 'num5'|| $ctrl.dominoTopSelected === 'num6'}"
+                                ></span>
+                    </td>
+                    <td></td>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoTopSelected === 'num2' || $ctrl.dominoTopSelected === 'num3'|| $ctrl.dominoTopSelected === 'num4'|| $ctrl.dominoTopSelected === 'num5' || $ctrl.dominoTopSelected === 'num6'}"
+                                ></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="domino_middleLine"></div>
+        <table class="domino_bottom">
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoBottomSelected === 'num2' || $ctrl.dominoBottomSelected === 'num3'|| $ctrl.dominoBottomSelected === 'num4'|| $ctrl.dominoBottomSelected === 'num5' || $ctrl.dominoBottomSelected === 'num6'}"
+                                ></span>
+                    </td>
+                    <td></td>
+                    <td>
+                        <span class="domino_circle num4 num5 num6"
+                              ng-class="{domino_active: $ctrl.dominoBottomSelected === 'num4'|| $ctrl.dominoBottomSelected === 'num5'|| $ctrl.dominoBottomSelected === 'num6'}"
+                                ></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoBottomSelected === 'num6'}"
+                                ></span>
+                    </td>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoBottomSelected === 'num1'|| $ctrl.dominoBottomSelected === 'num3'|| $ctrl.dominoBottomSelected === 'num5'}"
+                                ></span>
+                    </td>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoBottomSelected === 'num6'}"
+                                ></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoBottomSelected === 'num4'|| $ctrl.dominoBottomSelected === 'num5'|| $ctrl.dominoBottomSelected === 'num6'}"
+                                ></span>
+                    </td>
+                    <td></td>
+                    <td>
+                        <span class="domino_circle"
+                              ng-class="{domino_active: $ctrl.dominoBottomSelected === 'num2' || $ctrl.dominoBottomSelected === 'num3'|| $ctrl.dominoBottomSelected === 'num4'|| $ctrl.dominoBottomSelected === 'num5' || $ctrl.dominoBottomSelected === 'num6'}"
+                                ></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</section>
+
+<div class="domino_sizeControlContainer">
+    <label for="dominoSize">Size</label>
+    <input type="range" id="dominoSize" name="dominoSize" min="0.5" max="1.5" step="0.05"
+           ng-model="$ctrl.dominoSize" ng-change="$ctrl.changeDominoScale()">
+</div>
+
+<div class="domino_animationSpeedControlContainer">
+    <label for="dominoAnimationSpeed">Speed</label>
+    <input type="range" id="dominoAnimationSpeed" name="dominoAnimationSpeed" min="0" max="2" step="0.1"
+           ng-model="$ctrl.dominoAnimationSpeed" ng-change="$ctrl.changeDominoAnimationSpeed()">
+</div>
