@@ -1,4 +1,5 @@
 'use strict';
+// These data were uploaded to the Firebase server
 
 let grades = {
     "gradeId0": {
