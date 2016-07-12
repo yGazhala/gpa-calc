@@ -3,22 +3,12 @@
 <section class="domino_selectDominoControlContainer">
     <label for="topDomino">Select the top</label>
     <select name="topDomino" id="topDomino" ng-model="$ctrl.dominoTopSelected">
-        <option value="{{$ctrl.dominoAvailable[0]}}">1</option>
-        <option value="{{$ctrl.dominoAvailable[1]}}">2</option>
-        <option value="{{$ctrl.dominoAvailable[2]}}">3</option>
-        <option value="{{$ctrl.dominoAvailable[3]}}">4</option>
-        <option value="{{$ctrl.dominoAvailable[4]}}">5</option>
-        <option value="{{$ctrl.dominoAvailable[5]}}">6</option>
+        <option ng-repeat="domino in $ctrl.dominoAvailable" value="{{domino}}">{{$index+1}}</option>
     </select>
 
     <label for="bottomDomino">Select the bottom</label>
     <select name="bottomDomino" id="bottomDomino" ng-model="$ctrl.dominoBottomSelected">
-        <option value="{{$ctrl.dominoAvailable[0]}}">1</option>
-        <option value="{{$ctrl.dominoAvailable[1]}}">2</option>
-        <option value="{{$ctrl.dominoAvailable[2]}}">3</option>
-        <option value="{{$ctrl.dominoAvailable[3]}}">4</option>
-        <option value="{{$ctrl.dominoAvailable[4]}}">5</option>
-        <option value="{{$ctrl.dominoAvailable[5]}}">6</option>
+        <option ng-repeat="domino in $ctrl.dominoAvailable" value="{{domino}}">{{$index+1}}</option>
     </select>
 </section>
 
